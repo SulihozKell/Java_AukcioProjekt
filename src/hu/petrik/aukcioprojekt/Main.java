@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Tesztelés
+        /*
         Festmeny f1 = new Festmeny("Valami Cím", "Valaki Neve", "Stilusos");
         f1.licit();
         System.out.println(f1.getFesto());
@@ -44,7 +45,7 @@ public class Main {
 
         Festmeny f3 = new Festmeny("Cím", "Festő", "Stílus");
         System.out.println(f3);
-
+        */
         // Lista festményekkel
         ArrayList<Festmeny> festmenyek = new ArrayList<>();
         festmenyek.add(new Festmeny("Nyugalom", "Teszt Elek", "Barokk"));
@@ -53,12 +54,20 @@ public class Main {
 
         fajlBeolvasas("festmenyek.csv", festmenyek);
 
-        System.out.println(festmenyek);
+        //System.out.println(festmenyek);
 
+        for (int i = 0; i < 20; i++) {
+            int randomNum = (int)(Math.random() * festmenyek.size());
+            festmenyek.get(randomNum).licit();
+        }
+        //System.out.println();
+        //System.out.println(festmenyek);
 
+        for (Festmeny f : festmenyek) {
+            System.out.println(f);
+        }
 
     }
-
 
     public static void fajlBeolvasas(String fajlNev, ArrayList<Festmeny> festmenyek) {
         try {
@@ -67,7 +76,7 @@ public class Main {
             String sor = br.readLine();
             while (sor != null) {
                 String[] adatok = sor.split(";");
-                Festmeny festmeny = new Festmeny(adatok[0], adatok[1], adatok[2]);
+                Festmeny festmeny = new Festmeny(adatok[1], adatok[0], adatok[2]);
                 festmenyek.add(festmeny);
                 sor = br.readLine();
             }
