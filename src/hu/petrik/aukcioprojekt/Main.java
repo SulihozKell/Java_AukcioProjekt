@@ -66,7 +66,12 @@ public class Main {
 
         felhasznaloLicit(festmenyek);
         legdragabbElkelt(festmenyek);
-
+        if (tiznelTobbszorLicitaltak(festmenyek)) {
+            System.out.println("Volt olyan festmény amire 10-nél többször licitáltak!");
+        }
+        else {
+            System.out.println("Nem volt olyan festmény amire 10-nél többször licitáltak!");
+        }
     }
 
     public static void fajlBeolvasas(String fajlNev, ArrayList<Festmeny> festmenyek) {
@@ -155,5 +160,14 @@ public class Main {
             }
         }
         System.out.println("A legdrágábban elkelt festmény: " + (legnagyobbIndex + 1) + ". sorszámú. " + legnagyobb + "$.");
+    }
+
+    public static boolean tiznelTobbszorLicitaltak(ArrayList<Festmeny> festmenyek) {
+        for (Festmeny f : festmenyek) {
+            if (f.getLicitekSzama() >= 10) {
+                return true;
+            }
+        }
+        return false;
     }
 }
