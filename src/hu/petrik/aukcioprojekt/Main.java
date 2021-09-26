@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
@@ -60,12 +61,12 @@ public class Main {
             int randomNum = (int)(Math.random() * festmenyek.size());
             festmenyek.get(randomNum).licit();
         }
-        //System.out.println();
-        //System.out.println(festmenyek);
 
         for (Festmeny f : festmenyek) {
             System.out.println(f);
         }
+
+        felhasznaloLicit(festmenyek);
 
     }
 
@@ -85,6 +86,31 @@ public class Main {
         }
         catch (IOException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public static void felhasznaloLicit(ArrayList<Festmeny> festmenyek) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Festmény sorszáma: ");
+
+        int sorszam = 0;
+        boolean vege = false;
+        while (!vege) {
+            try {
+                sorszam = sc.nextInt();
+            }
+            catch (Exception e) {
+                System.out.println("Ez nem egy sorszám!");
+            }
+            if (sorszam == 0) {
+                vege = true;
+            }
+            else if (sorszam <= festmenyek.size() && sorszam > 0) {
+                festmenyek.get(sorszam - 1).licit();
+            }
+            else {
+                System.out.println("Nem létező sorszám!");
+            }
         }
     }
 }
