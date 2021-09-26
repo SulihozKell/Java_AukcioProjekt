@@ -55,8 +55,6 @@ public class Main {
 
         fajlBeolvasas("festmenyek.csv", festmenyek);
 
-        //System.out.println(festmenyek);
-
         for (int i = 0; i < 20; i++) {
             int randomNum = (int)(Math.random() * festmenyek.size());
             festmenyek.get(randomNum).licit();
@@ -94,10 +92,12 @@ public class Main {
 
         int sorszam = 0;
         boolean vege = false;
+
         while (!vege) {
             try {
                 System.out.println("Festmény sorszáma: ");
                 sorszam = sc.nextInt();
+
             }
             catch (Exception e) {
                 System.out.println("Ez nem egy sorszám!");
@@ -106,8 +106,6 @@ public class Main {
                 vege = true;
             }
             else if (sorszam <= festmenyek.size() && sorszam > 0) {
-                System.out.println("Milyen mértékkel szeretne licitálni? ");
-
                 if (uresEnter(festmenyek, sorszam)) {
                     vege = true;
                 }
@@ -116,9 +114,16 @@ public class Main {
                 System.out.println("Nem létező sorszám!");
             }
         }
+        for (Festmeny f : festmenyek) {
+            if (f.getLegmagasabbLicit() != 0) {
+                f.setElkelt(true);
+            }
+            System.out.println(f);
+        }
     }
 
     public static boolean uresEnter(ArrayList<Festmeny> festmenyek, int sorszam) {
+        System.out.println("Milyen mértékkel szeretne licitálni? ");
         Scanner sc = new Scanner(System.in);
         String mertek = sc.nextLine();
 
