@@ -62,10 +62,9 @@ public class Festmeny {
                 legmagasabbLicit = (int)(legmagasabbLicit * 1.1);
 
                 String legmagasabbLicitString = String.valueOf(legmagasabbLicit);
-                int legmagasabbLicitStringHossz = legmagasabbLicitString.length();
                 char[] legmagasabbLicitChars = legmagasabbLicitString.toCharArray();
 
-                for (int i = 0; i < legmagasabbLicitStringHossz; i++) {
+                for (int i = 0; i < legmagasabbLicitString.length(); i++) {
                     if (i >= 2) {
                         legmagasabbLicitChars[i] = '0';
                         legmagasabbLicitString = String.valueOf(legmagasabbLicitChars);
@@ -80,7 +79,37 @@ public class Festmeny {
     }
 
     public void licit(int mertek) {
+        if (elkelt) {
+            System.out.println("A festmény már elkelt.");
+        }
+        else if (mertek >= 10 && mertek <= 100) {
+            if (licitekSzama == 0) {
+                legmagasabbLicit = 100;
+                licitekSzama++;
+                legutolsoLicitIdeje = LocalDateTime.now();
+            }
+            else {
+                float noveles = (float)mertek / 100 + 1;
+                legmagasabbLicit = (int)(legmagasabbLicit * noveles);
 
+                String legmagasabbLicitString = String.valueOf(legmagasabbLicit);
+                char[] legmagasabbLicitChars = legmagasabbLicitString.toCharArray();
+
+                for (int i = 0; i < legmagasabbLicitString.length(); i++) {
+                    if (i >= 2) {
+                        legmagasabbLicitChars[i] = '0';
+                        legmagasabbLicitString = String.valueOf(legmagasabbLicitChars);
+                    }
+                }
+
+                legmagasabbLicit = Integer.parseInt(legmagasabbLicitString);
+                licitekSzama++;
+                legutolsoLicitIdeje = LocalDateTime.now();
+            }
+        }
+        else {
+            System.out.println("A mértéknek 10 és 100 között kell lennie.");
+        }
     }
 
 
