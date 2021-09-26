@@ -1,5 +1,8 @@
 package hu.petrik.aukcioprojekt;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
@@ -44,9 +47,35 @@ public class Main {
 
         // Lista festményekkel
         ArrayList<Festmeny> festmenyek = new ArrayList<>();
-        festmenyek.add(new Festmeny("Nyugalom", "Teszt Elek", "Egyedi"));
-        festmenyek.add(new Festmeny("A Sárkány", "Gipsz Jakab", "Fantasy"));
-        festmenyek.add(new Festmeny("Étel", "Éhes Évi", "Fantasy"));
+        festmenyek.add(new Festmeny("Nyugalom", "Teszt Elek", "Barokk"));
+        festmenyek.add(new Festmeny("A Sárkány", "Gipsz Jakab", "Reneszánsz"));
+        festmenyek.add(new Festmeny("Étel", "Éhes Évi", "Reneszánsz"));
 
+        fajlBeolvasas("festmenyek.csv", festmenyek);
+
+        System.out.println(festmenyek);
+
+
+
+    }
+
+
+    public static void fajlBeolvasas(String fajlNev, ArrayList<Festmeny> festmenyek) {
+        try {
+            FileReader fr = new FileReader(fajlNev);
+            BufferedReader br = new BufferedReader(fr);
+            String sor = br.readLine();
+            while (sor != null) {
+                String[] adatok = sor.split(";");
+                Festmeny festmeny = new Festmeny(adatok[0], adatok[1], adatok[2]);
+                festmenyek.add(festmeny);
+                sor = br.readLine();
+            }
+            br.close();
+            fr.close();
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
