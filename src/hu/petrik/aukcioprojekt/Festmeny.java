@@ -91,14 +91,13 @@ public class Festmeny {
                 legmagasabbLicit = Integer.parseInt(legmagasabbLicitString);
                 licitekSzama++;
                 legutolsoLicitIdeje = LocalDateTime.now();
-                elkelt = true;
+                setElkelt(true);
             }
         }
         else {
             System.out.println("A mértéknek 10 és 100 között kell lennie.");
         }
     }
-
 
     @Override
     public String toString() {
