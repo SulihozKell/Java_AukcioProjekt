@@ -49,7 +49,21 @@ public class Festmeny {
     }
 
     public void licit() {
-
+        if (elkelt) {
+            System.out.println("A festmény már elkelt.");
+        }
+        else {
+            if (licitekSzama == 0) {
+                legmagasabbLicit = 100;
+                licitekSzama++;
+                legutolsoLicitIdeje = LocalDateTime.now();
+            }
+            else {
+                legmagasabbLicit = (int)(legmagasabbLicit * 1.1);
+                licitekSzama++;
+                legutolsoLicitIdeje = LocalDateTime.now();
+            }
+        }
     }
 
     public void licit(int mertek) {
