@@ -60,6 +60,19 @@ public class Festmeny {
             }
             else {
                 legmagasabbLicit = (int)(legmagasabbLicit * 1.1);
+
+                String legmagasabbLicitString = String.valueOf(legmagasabbLicit);
+                int legmagasabbLicitStringHossz = legmagasabbLicitString.length();
+                char[] legmagasabbLicitChars = legmagasabbLicitString.toCharArray();
+
+                for (int i = 0; i < legmagasabbLicitStringHossz; i++) {
+                    if (i >= 2) {
+                        legmagasabbLicitChars[i] = '0';
+                        legmagasabbLicitString = String.valueOf(legmagasabbLicitChars);
+                    }
+                }
+
+                legmagasabbLicit = Integer.parseInt(legmagasabbLicitString);
                 licitekSzama++;
                 legutolsoLicitIdeje = LocalDateTime.now();
             }

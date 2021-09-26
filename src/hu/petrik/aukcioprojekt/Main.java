@@ -17,5 +17,13 @@ public class Main {
         System.out.println(f1.getLegutolsoLicitIdeje());
         System.out.println(f1.getLicitekSzama());
         System.out.println(f1.getLegmagasabbLicit());
+
+        for (int i = 0; i < 29; i++) {
+            f1.licit();
+        }
+
+        System.out.println(f1.getLegutolsoLicitIdeje());
+        System.out.println(f1.getLicitekSzama());
+        System.out.println(f1.getLegmagasabbLicit());
     }
 }
