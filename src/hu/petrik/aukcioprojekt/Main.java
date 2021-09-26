@@ -26,7 +26,7 @@ public class Main {
         System.out.println(f1.getLicitekSzama());
         System.out.println(f1.getLegmagasabbLicit());
 
-        Festmeny f2 = new Festmeny("Egy Cím", "Még Egy Név", "Wow");
+        Festmeny f2 = new Festmeny("Harcos", "Teszt Elek", "Szép");
 
         f2.licit(-100);
         f2.licit(20);
@@ -37,6 +37,12 @@ public class Main {
         System.out.println(f2.getLegmagasabbLicit());
         f2.licit(10);
         System.out.println(f2.getLegmagasabbLicit());
+
+        System.out.println(f2);
+
+        Festmeny f3 = new Festmeny("Cím", "Festő", "Stílus");
+
+        System.out.println(f3);
 
 
     }

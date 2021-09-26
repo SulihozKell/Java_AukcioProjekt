@@ -91,6 +91,7 @@ public class Festmeny {
                 legmagasabbLicit = Integer.parseInt(legmagasabbLicitString);
                 licitekSzama++;
                 legutolsoLicitIdeje = LocalDateTime.now();
+                elkelt = true;
             }
         }
         else {
@@ -99,6 +100,10 @@ public class Festmeny {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        return this.festo + ": " + this.cim + "(" + this.stilus + ")\n" +
+                (this.elkelt ? "elkelt\n" : "") +
+                this.legmagasabbLicit + "$ - " + this.legutolsoLicitIdeje + "(összesen " + this.licitekSzama + " db)";
+    }
 }
