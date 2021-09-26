@@ -59,21 +59,7 @@ public class Festmeny {
                 legutolsoLicitIdeje = LocalDateTime.now();
             }
             else {
-                legmagasabbLicit = (int)(legmagasabbLicit * 1.1);
-
-                String legmagasabbLicitString = String.valueOf(legmagasabbLicit);
-                char[] legmagasabbLicitChars = legmagasabbLicitString.toCharArray();
-
-                for (int i = 0; i < legmagasabbLicitString.length(); i++) {
-                    if (i >= 2) {
-                        legmagasabbLicitChars[i] = '0';
-                        legmagasabbLicitString = String.valueOf(legmagasabbLicitChars);
-                    }
-                }
-
-                legmagasabbLicit = Integer.parseInt(legmagasabbLicitString);
-                licitekSzama++;
-                legutolsoLicitIdeje = LocalDateTime.now();
+                licit(10);
             }
         }
     }
