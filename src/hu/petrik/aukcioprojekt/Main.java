@@ -91,12 +91,12 @@ public class Main {
 
     public static void felhasznaloLicit(ArrayList<Festmeny> festmenyek) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Festmény sorszáma: ");
 
         int sorszam = 0;
         boolean vege = false;
         while (!vege) {
             try {
+                System.out.println("Festmény sorszáma: ");
                 sorszam = sc.nextInt();
             }
             catch (Exception e) {
@@ -106,10 +106,34 @@ public class Main {
                 vege = true;
             }
             else if (sorszam <= festmenyek.size() && sorszam > 0) {
-                festmenyek.get(sorszam - 1).licit();
+                System.out.println("Milyen mértékkel szeretne licitálni? ");
+
+                if (uresEnter(festmenyek, sorszam)) {
+                    vege = true;
+                }
             }
             else {
                 System.out.println("Nem létező sorszám!");
+            }
+        }
+    }
+
+    public static boolean uresEnter(ArrayList<Festmeny> festmenyek, int sorszam) {
+        Scanner sc = new Scanner(System.in);
+        String mertek = sc.nextLine();
+
+        if (mertek.isEmpty()) {
+            festmenyek.get(sorszam - 1).licit();
+            return false;
+        }
+        else {
+            try {
+                festmenyek.get(sorszam - 1).licit(Integer.parseInt(mertek));
+                return false;
+            }
+            catch (Exception e) {
+                System.out.println("Ez nem egy sorszám!");
+                return true;
             }
         }
     }
