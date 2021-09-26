@@ -91,7 +91,6 @@ public class Festmeny {
                 legmagasabbLicit = Integer.parseInt(legmagasabbLicitString);
                 licitekSzama++;
                 legutolsoLicitIdeje = LocalDateTime.now();
-                //setElkelt(true);
             }
         }
         else {
