@@ -65,6 +65,7 @@ public class Main {
         }
 
         felhasznaloLicit(festmenyek);
+        legdragabbElkelt(festmenyek);
 
     }
 
@@ -141,5 +142,18 @@ public class Main {
                 return true;
             }
         }
+    }
+
+    public static void legdragabbElkelt(ArrayList<Festmeny> festmenyek) {
+        int legnagyobb = 0;
+        int legnagyobbIndex = 0;
+
+        for (int i = 0; i < festmenyek.size(); i++) {
+            if (festmenyek.get(i).getElkelt() && festmenyek.get(i).getLegmagasabbLicit() > legnagyobb) {
+                legnagyobb = festmenyek.get(i).getLegmagasabbLicit();
+                legnagyobbIndex = i;
+            }
+        }
+        System.out.println("A legdrágábban elkelt festmény: " + (legnagyobbIndex + 1) + ". sorszámú. " + legnagyobb + "$.");
     }
 }
