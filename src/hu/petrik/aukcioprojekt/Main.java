@@ -72,6 +72,7 @@ public class Main {
         else {
             System.out.println("Nem volt olyan festmény amire 10-nél többször licitáltak!");
         }
+        hanyFestmenyNemKeltEl(festmenyek);
     }
 
     public static void fajlBeolvasas(String fajlNev, ArrayList<Festmeny> festmenyek) {
@@ -169,5 +170,15 @@ public class Main {
             }
         }
         return false;
+    }
+
+    public static void hanyFestmenyNemKeltEl(ArrayList<Festmeny> festmenyek) {
+        int osszeg = 0;
+        for (Festmeny f : festmenyek) {
+            if (!f.getElkelt()) {
+                osszeg++;
+            }
+        }
+        System.out.println(osszeg + " db festmény nem kelt el.");
     }
 }
